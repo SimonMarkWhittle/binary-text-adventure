@@ -1,4 +1,41 @@
 
+def MakeInputMessage(options):
+    string = "[Please input "
+
+    length = len(options)
+
+    string += "'" + str(options[0]) + "'"
+
+    if length == 1:
+        return string + "]"
+    elif length == 2:
+        return string + " or '" + str(options[1]) + "']"
+
+    for count in range(length - 2):
+        string += ", '" + str(options[count + 1]) + "'"
+
+    return string + ", or '" + str(options[length -1]) + "']"
+
+def GoodInput(message, options, pleaseInput=True):
+    goodInput = False
+
+    inputMsg = ""
+    if pleaseInput:
+        inputMsg = MakeInputMessage(options)
+
+    while not goodInput:
+        if (message != ""):
+            print(message)
+
+        inpt = input(inputMsg + "\n")
+
+        if inpt in options:
+            goodInput = True
+        else:
+            print("[Bad input]\n")
+
+    return inpt
+
 def GoodInput2Opt(message, opt1, opt2):
     goodInput = False
     answer = False
@@ -16,6 +53,20 @@ def GoodInput2Opt(message, opt1, opt2):
             answer = False
             goodInput = True
         else:
-            print("[Bad input]\n")
+            print("\n[Bad input]\n")
 
     return answer
+
+
+def Save():
+    ...
+
+def Load():
+    return "eeee"
+
+
+if __name__ == "__main__":
+    options = ['foo', 'bar', 'baz']
+
+    resp = GoodInput("Dewit", options, True)
+    print(resp)
