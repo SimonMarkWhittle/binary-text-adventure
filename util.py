@@ -63,7 +63,7 @@ def NameInput():
     done = False
     while not done:
         print ("\n[name must be 15 or fewer characters]")
-        print("name:\n")
+        print("name:")
         inpt = str(input())
 
         length = len(inpt)

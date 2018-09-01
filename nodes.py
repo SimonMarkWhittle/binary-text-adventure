@@ -21,8 +21,10 @@ eatACabbage = Node(
     text="""
 You pick up one of the cabbages you've found laying on the ground and eat it. Gross.
 """,
-    branch1=die,
-    branch2=ascend
+    branches=[
+        die,
+        ascend
+    ]
 )
 
 climbTheClocktower = Node(
@@ -30,8 +32,10 @@ climbTheClocktower = Node(
     text="""
 You clamber up the rough side of the clocktower and get a spectacular view of the city.
 """,
-    branch1=die,
-    branch2=ascend
+    branches=[
+        die,
+        ascend,
+    ]
 )
 
 enterTheDoor = Node(
@@ -41,8 +45,10 @@ You push the doors open and are bathed in brilliant light.
 As your eyes adjust you find yourself standing in an open city square.
 Nobody is around.
 """,
-    branch1=climbTheClocktower,
-    branch2=ascend
+    branches=[
+        climbTheClocktower,
+        eatACabbage,
+    ]
 )
 
 walkAway = Node(
@@ -56,7 +62,9 @@ root = Node(
     text="""
 You stand before a grand door of intricately carved stone.
 """,
-    branch1=enterTheDoor,
-    branch2=walkAway,
+    branches=[
+        enterTheDoor,
+        walkAway
+    ],
     isRoot=True
 )
