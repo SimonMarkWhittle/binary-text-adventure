@@ -27,7 +27,7 @@ def GoodInput(message, options, pleaseInput=True):
         if (message != ""):
             print(message)
 
-        inpt = input(inputMsg + "\n")
+        inpt = str(input(inputMsg + "\n"))
 
         if inpt in options:
             goodInput = True
@@ -57,13 +57,21 @@ def GoodInput2Opt(message, opt1, opt2):
 
     return answer
 
+def NameInput():
+    string = ""
 
-def Save():
-    ...
+    done = False
+    while not done:
+        print ("\n[name must be 15 or fewer characters]")
+        print("name:\n")
+        inpt = str(input())
 
-def Load():
-    return "eeee"
+        length = len(inpt)
+        if length <= 15:
+            done = True
+            string = inpt
 
+    return string
 
 if __name__ == "__main__":
     options = ['foo', 'bar', 'baz']

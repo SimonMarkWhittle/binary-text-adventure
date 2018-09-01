@@ -1,10 +1,34 @@
+from util import GoodInput2Opt, GoodInput, NameInput
+from gameManager import GameManager
+
+GameManager(None)
+
 from nodes import root
-from util import GoodInput2Opt
+
+def NewOrLoad():
+    startNode = None
+
+    answer = GoodInput("Choose Start Option", ['new', 'load'])
+
+    if answer == 'new':
+        NewGame()
+        startNode = root
+    elif answer == 'load':
+        while GameManager.instance.playerName is None:
+            startNode = GameManager.instance.Load(root.key)
+
+    return startNode
+
+def NewGame():
+    print('What are you called?')
+    name = NameInput()
+    GameManager.instance.playerName = name
+    GameManager.instance.Save(root.key)
 
 def main():
     done = False
 
-    node = root
+    node = NewOrLoad()
     while not done:
         node.display()
         if node.isEnding:
