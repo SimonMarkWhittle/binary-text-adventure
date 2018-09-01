@@ -19,7 +19,7 @@ you ascend to the heavens and become a god
 eatACabbage = Node(
     choice="Eat a cabbage",
     text="""
-You pick up one of the cabbages you've found laying on the ground. Gross.
+You pick up one of the cabbages you've found laying on the ground and eat it. Gross.
 """,
     branch1=die,
     branch2=ascend

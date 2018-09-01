@@ -7,6 +7,7 @@ class Node(object):
         self.choice = choice
         self.text = text
         self.key = None
+        self.parent = None
 
         if (branch1 is None and branch2 is None):
             self.isEnding = True
@@ -16,6 +17,8 @@ class Node(object):
             self.isEnding = False
             self.branch1 = branch1
             self.branch2 = branch2
+            self.branch1.parent = self
+            self.branch2.parent = self
             ...
         
         if (isRoot):
