@@ -1,5 +1,6 @@
 from util import GoodInput2Opt, GoodInput, NameInput
 from gameManager import GameManager
+import os
 
 GameManager(None)
 
@@ -30,6 +31,7 @@ def main():
 
     node = NewOrLoad()
     while not done:
+        os.system('cls')
         node.display()
         if node.isEnding:
             done = not GoodInput2Opt("Play Again?", 'y', 'n')
