@@ -8,6 +8,7 @@ class Node(object):
         self.text = text
         self.key = None
         self.parent = None
+        self.taken = []
 
         if (branches is None):
             self.isEnding = True
@@ -57,8 +58,13 @@ class Node(object):
 
             inputList = []
 
+            optionBranches = self.branches.copy()
+
+            for takenBranch in self.taken:
+                optionBranches.remove(takenBranch)
+
             count=1
-            for branch in self.branches:
+            for branch in optionBranches:
                 print("(" + str(count) + ") %s" % (branch.choice))
                 inputList.append(str(count))
                 count += 1
@@ -77,11 +83,12 @@ class Node(object):
 
             try:
                 num = int(answer) - 1
-                nextBranch = self.branches[num]
+                nextBranch = optionBranches[num]
+                self.taken.append(nextBranch)        
             except:
                 nextBranch = None
 
             if nextBranch is not None:
                 done = True
-        
+
         return nextBranch
